@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from 'react';
+import { formatPrice } from '../../util/format';
+
 import { MdAddShoppingCart } from 'react-icons/md';
 
 import api from "../../services/api";
@@ -9,9 +11,12 @@ export default function Home() {
   const [products, setProducts] = useState([]); 
 
   useEffect( ()=>{
-    api.get('products').then(data =>{
-      setProducts(data.data)
-      console.log(data.data);
+    api.get('products').then(response =>{
+      const productData = response.data.map( data =>({
+        ...data,
+        priceFormatted: formatPrice(data.price),
+      }));
+      setProducts(productData)
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
@@ -26,7 +31,7 @@ export default function Home() {
             alt={product.title}
             />
         <strong>{product.title}</strong>
-          <span>{product.price}</span>
+          <span>{product.priceFormatted}</span>
 
             <button type="button">
               <div>
