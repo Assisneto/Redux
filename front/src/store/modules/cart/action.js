@@ -11,3 +11,11 @@ export function DeleteFromCart(productID) {
     productID
   }
 }
+
+export function UpdateAmount(id,amount){
+  return {
+    type: '@cart/UPDATE_AMOUNT',
+    id,
+    amount
+  }
+}
