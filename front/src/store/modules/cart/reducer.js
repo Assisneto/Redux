@@ -38,9 +38,7 @@ export default function cart(state = [], action) {
         return produce(state, draft =>{
           
           const productIndex = draft.findIndex( p => p.id === action.id)
-          console.log(action.amount);
-          
-          
+                    
           if(productIndex >= 0){
             draft[productIndex].amount = action.amount;
           }
