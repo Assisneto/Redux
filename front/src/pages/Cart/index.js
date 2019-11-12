@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { DeleteFromCart, UpdateAmount } from "../../store/modules/cart/action";
+import { DeleteFromCart, UpdateAmountRequest } from "../../store/modules/cart/action";
 
 import { MdRemoveCircleOutline, MdAddCircleOutline, MdDelete } from "react-icons/md";
 import { Container,ProductTable,Total } from './styles';
@@ -26,11 +26,11 @@ export default function Cart() {
   }
 
   const increment = product =>{
-    dispatch(UpdateAmount(product.id,product.amount +1))
+    dispatch(UpdateAmountRequest(product.id,product.amount +1))
   }
 
   const decrement = product =>{
-    dispatch(UpdateAmount(product.id,product.amount -1))
+    dispatch(UpdateAmountRequest(product.id,product.amount -1))
   }
 
 
